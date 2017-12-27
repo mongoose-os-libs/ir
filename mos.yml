@@ -1,0 +1,25 @@
+author: Vladimir Dronnikov <dronnikov@gmail.com>
+type: lib
+description: IR protocol library
+version: 1.0
+
+sources:
+  - src
+includes:
+  - include
+filesystem:
+  - fs
+config_schema:
+libs:
+cdefs:
+  MGOS_IRRECV_NEC_CHECK_ADDR_CRC: 0
+  MGOS_IRRECV_NEC_CHECK_CODE_CRC: 1
+
+tags:
+  - c
+  - js
+  - ir
+  - irrecv
+  - nec
+
+manifest_version: 2017-09-29
