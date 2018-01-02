@@ -3,6 +3,9 @@
 
 let IR = {
 
+  _mgp: ffi('void *mgos_get_mgstr_ptr(void *)'),
+  _mgl: ffi('int mgos_get_mgstr_len(void *)'),
+
   Receiver: {
 
     NEC: {
@@ -23,6 +26,25 @@ let IR = {
         close: function() {
           return IR.Receiver.NEC._cls(this.obj);
         }
+      }
+    }
+
+  },
+
+  Sender: {
+
+    NEC: {
+      _send: ffi('void mgos_irsend_nec(int, int, int)'),
+
+      // ## **`IR.Sender.NEC.pwm(pin, code)`**
+      // Send NEC IR code via real IR led. Return value: none.
+      pwm: function(pin, code) {
+        return IR.Sender.NEC._send(pin, code, false);
+      },
+      // ## **`IR.Sender.NEC.tsop(pin, code)`**
+      // Mimic TSOP receiver: drive a pin as if it would be connected to a TSOP receiver. Return value: none.
+      tsop: function(pin, code) {
+        return IR.Sender.NEC._send(pin, code, true);
       }
     }
 
