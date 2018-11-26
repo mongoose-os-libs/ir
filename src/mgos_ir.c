@@ -6,7 +6,7 @@
 // NEC receiver
 //------------------------------------------------------------------------------
 
-static void irrecv_nec_handler(int pin, void *arg)
+static IRAM void irrecv_nec_handler(int pin, void *arg)
 {
   struct mgos_irrecv_nec_s *obj = (struct mgos_irrecv_nec_s *)arg;
   // get microseconds
@@ -49,7 +49,8 @@ static void irrecv_nec_handler(int pin, void *arg)
 #endif
     {
       // report code
-      LOG(LL_DEBUG, ("IRRECV @ %d: %08X", pin, obj->code.dword));
+      // NO LOG or printf in ISR service routine, or in the handler
+      // LOG(LL_DEBUG, ("IRRECV @ %d: %08X", pin, obj->code.dword));
       if (obj->handler) {
         obj->handler(obj->code.dword, obj->user_data);
       }
