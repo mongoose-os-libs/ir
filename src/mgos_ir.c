@@ -1,6 +1,8 @@
 #include "mgos.h"
 #include "mgos_pwm.h"
 #include "mgos_ir.h"
+#include "mgos_time.h"
+
 
 //------------------------------------------------------------------------------
 // NEC receiver
