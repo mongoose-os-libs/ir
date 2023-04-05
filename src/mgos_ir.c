@@ -12,7 +12,7 @@ static IRAM void irrecv_nec_handler(int pin, void *arg)
 {
   struct mgos_irrecv_nec_s *obj = (struct mgos_irrecv_nec_s *)arg;
   // get microseconds
-  uint32_t t = 1000000 * mgos_uptime();
+  uint64_t t = 1000000 * mgos_uptime();
   // 0-1 transition?
   if (mgos_gpio_read(pin)) {
     // start counter
