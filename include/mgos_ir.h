@@ -24,7 +24,7 @@ struct mgos_irrecv_nec_s {
     uint8_t byte[4];
     uint32_t dword;
   } code;
-  uint32_t t;
+  uint64_t t;
   uint8_t bit;
 };
 
